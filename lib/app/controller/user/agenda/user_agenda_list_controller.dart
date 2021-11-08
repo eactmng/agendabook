@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:agendabook/app/data/model/model.dart';
 import 'package:agendabook/app/data/model/neighborhood_life.dart';
-import 'package:agendabook/app/data/provider/request_api.dart';
-import 'dart:convert';
 
-import 'package:agendabook/app/data/provider/url.dart';
-
-class UserListType1Controller extends GetxController {
-  var scrollController = ScrollController();
+class UserAgendaListController extends GetxController {
+  var scrollController = new ScrollController();
 
   final postList = [];
 

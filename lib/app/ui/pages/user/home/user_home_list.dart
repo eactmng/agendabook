@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:agendabook/app/controller/user/common/user_list_type1_controller.dart';
+import 'package:agendabook/app/controller/user/home/user_home_list_controller.dart';
 import 'package:agendabook/app/ui/theme/app_theme.dart';
 import 'package:agendabook/app/ui/widgets/image/image_container.dart';
 import 'package:agendabook/app/ui/widgets/button/last_list_btn.dart';
@@ -9,16 +9,18 @@ import 'package:agendabook/app/ui/widgets/etc/loading_widget.dart';
 import 'package:agendabook/app/ui/widgets/box/round_box.dart';
 
 
-class UserListType1 extends StatelessWidget {
-  final UserListType1Controller c = Get.put(UserListType1Controller());
+class UserHomeList extends StatelessWidget {
 
   final String type;
 
-  UserListType1({Key? key, required this.type}) : super(key: key);
+  UserHomeList({Key? key, required this.type}) : super(key: key);
+
+  final UserHomeListController c = Get.put(UserHomeListController());
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: GetBuilder<UserListType1Controller>(builder: (_) {
+
+    return Container(child: GetBuilder<UserHomeListController>(builder: (_) {
       return ListView.separated(
         controller: c.scrollController,
         itemBuilder: (_, index) {
@@ -40,17 +42,17 @@ class UserListType1 extends StatelessWidget {
               );
             } else {
               return Container(
-                  // child: Column(
-                  //   children: [
-                  //     _buildTop(index),
-                  //     _buildWriting(index),
-                  //     _buildType(index),
-                  //     _buildWriter(index),
-                  //
-                  //     _buildTail(index),
-                  //   ],
-                  // ),
-                  );
+                // child: Column(
+                //   children: [
+                //     _buildTop(index),
+                //     _buildWriting(index),
+                //     _buildType(index),
+                //     _buildWriter(index),
+                //
+                //     _buildTail(index),
+                //   ],
+                // ),
+              );
             }
           } else {
             // 값이 없는 경우
@@ -138,7 +140,7 @@ class UserListType1 extends StatelessWidget {
 
   Padding _buildWriting(index) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 0),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
@@ -154,7 +156,7 @@ class UserListType1 extends StatelessWidget {
 
   Padding _buildType(index) {
     return Padding(
-        padding: const EdgeInsets.only(top: 16, bottom: 10, left: 20, right: 24),
+        padding: const EdgeInsets.only(top: 16, bottom: 10, left: 40, right: 24),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -162,7 +164,7 @@ class UserListType1 extends StatelessWidget {
               Row(
                 children: List.generate(
                   c.postList[index].type.length,
-                  (i) => RoundBox(
+                      (i) => RoundBox(
                     title: c.postList[index].type[i],
                   ),
                 ),
@@ -189,9 +191,9 @@ class UserListType1 extends StatelessWidget {
             children: [
               TextButton.icon(
                 icon: ImageContainer(
-                  width: 30,
-                  height: 30,
-                  borderRadius: 15,
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
                   imageUrl: c.postList[index].profileImgUri,
                 ),
                 style: TextButton.styleFrom(primary: fTextColor),
@@ -260,7 +262,8 @@ class UserListType1 extends StatelessWidget {
     return Visibility(
       visible: c.postList[index].contentImgUri != '',
       child: Padding(
-        padding: EdgeInsets.only(left: 16, right: 16),
+        //padding: EdgeInsets.only(left: 16, right: 16),
+        padding: EdgeInsets.zero,
         child: Image.network(
           c.postList[index].contentImgUri,
           height: 200,

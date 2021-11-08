@@ -1,10 +1,10 @@
+import 'package:agendabook/app/ui/pages/user/agenda/user_agenda_list.dart';
 import 'package:flutter/material.dart';
-import 'package:agendabook/app/ui/pages/user/common/user_list_type1.dart';
 
 class UserAgendaTab1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return UserListType1(
+    return UserAgendaList(
       type: 'type1',
     );
   }
