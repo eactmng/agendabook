@@ -50,11 +50,7 @@ class UserMain extends StatelessWidget {
                 ),
                 bottomNavigationBar: BottomBarUser(),
                 floatingActionButton: FloatingActionButton(
-                    child: Icon(Icons.add),
-                    onPressed: () => AlertModal(title: "Test").show(context)
-                )
-            )
-        );
+                    child: Icon(Icons.add), onPressed: () => AlertModal(title: "Test").show(context))));
       },
     );
   }
